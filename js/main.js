@@ -1,65 +1,96 @@
-$(document).ready(function(){
-//nav영역
-
-function mobile(){
-  
+window.onload = function(){
     
-$('.all_menu').on('click',function(){
+const init = () =>{
+    //events
     
-    $('nav').stop().animate({
-        'left' : 0
-    });
+    const slideUp = (elem)=>{
+        const animateTarget = document.querySelector(elem);
+        
+        let targetHeight = animateTarget.offsetHeight,
+              moveUpToHide = setInterval(frame,10);
+        function frame(){
+            if(targetHeight == 0){
+                clearInterval(moveUpToHide);
+                animateTarget.style.display = 'none';
+            }else{
+                targetHeight--;
+                animateTarget.style.height = targetHeight + 'px';
+            }
+        }
+    }//slideUp
     
-});
+    const navSlideOn = (elem)=>{
+        const animateTarget = document.querySelector(elem);
+        
+         animateTarget.classList.add('slideOn');
+        
+        
+    }//nav slide 
     
-$('nav .close').on('click',function(){
-    $('nav').stop().animate({
-        left: '-100%'
-    });
-});
- 
-    $('nav').css({
-        'left' : '-100%'
-    })     
-}//모바일 끝
-    
-function pc(){
-    $('nav').css({
-        'left' : 0
-    })
-}
-
-
-
-    
-var win_width = $(window).width();
-    
-if(win_width >= 320 && win_width < 1200){
-    
-    mobile();
-    
-}
-
-if(win_width >= 1200){
-    pc();
-}
-  
-$(window).on('resize',function(){
-    console.log('야호')
-    var win_width = $(window).width();
-    if(win_width < 1200){
-    
-    mobile();
-    
+    const navSlideOff = (elem)=>{
+        const animateTarget = document.querySelector(elem);
+        animateTarget.classList.remove('slideOn');
     }
-if(win_width >= 1200){
-    pc();
-}
-    
-});//반응형 기본
     
     
-//mobile 시작
+    
+    const mobile = ()=>{
+        const allBtn = document.querySelector('.all_menu');
+        const nav = document.querySelector('nav'),
+              closeBtn = nav.querySelector('.close');
+        allBtn.addEventListener('click',function(){
+            navSlideOn('nav');
+        });
+        
+        closeBtn.addEventListener('click',function(){
+            navSlideOff('nav');
+        })
+    }//mobile
+    
+    const pc = ()=>{}//pc
+    
+    const common =()=>{
+        const closeBtn = document.querySelector('.close_b'),
+              topBn = document.querySelector('.top_bn');
+        
+        closeBtn.addEventListener('click',function(){
+            slideUp('.top_bn')
+        });
+        //-> top banner hide
+        
+    }//common
     
     
-}); //opening
+    
+    const resizing = ()=>{
+        const winWidth = window.innerWidth;
+        if(winWidth < 1200){
+            mobile();
+        }else{
+            pc();
+        }
+    }
+    
+    resizing();
+    window.addEventListener('resize',resizing);
+
+    common();
+    
+}//init
+
+init();
+    
+    
+    
+    
+    
+};//Document.ready
+
+
+
+
+
+
+
+
+
