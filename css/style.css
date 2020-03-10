@@ -581,6 +581,7 @@ input[type=search]{
         margin-right: auto;
         border:1px solid #d6d6d6;
         display: flex;
+        flex-wrap: wrap;
     }
     
     #content .account{
