@@ -576,15 +576,68 @@ input[type=search]{
 .notice{
     width: 100%;
     background-color:#f0f0f0;
-    padding-left: 15px;
+    padding: 15px;
     box-sizing: border-box;
-    height: 50px;
+    position: relative;
+    
 }
 
 .notice h3{
     font-size: 13px;
     color:#000;
-    line-height: 50px;
+    line-height: 36px;
+}
+
+.notice li{
+    font-size: 13px;
+    color:#666;
+}
+
+.notice .ctrls{
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+.notice .ctrls button{
+    width: 20px;
+    height: 20px;
+    background-color:#fff;
+    border:1px solid #e1e1e1;
+    text-indent: -9999px;
+    position: relative;
+    float: left;
+}
+.notice .ctrls .cost{
+    float: left;
+    font-size: 11px;
+    color:#666;
+    line-height: 21px;
+    margin:0 10px;
+}
+.notice .ctrls .cost .now{
+    color:#000;
+    
+}
+
+.notice .ctrls button:after{
+    display: block;
+    position: absolute;
+    top: 6px;
+    left: 7px;
+    width: 4px;
+    height: 7px;
+    background: url(../images/sp_arrow.png) no-repeat;
+    content: "";
+    
+}
+
+.notice .ctrls button.prev:after{
+    background-position: -44px -106px;
+}
+
+.notice .ctrls button.next:after{
+    background-position: -52px -106px;
 }
 /*피시사이즈*/
 @media all and (min-width:1024px){
@@ -819,6 +872,13 @@ input[type=search]{
         margin-left: auto;
         margin-right: auto;
         margin-top: 20px;
+        height: 50px;
+    }
+    
+    .notice ul{
+        position: absolute;
+        left: 140px;
+        top:25px;
     }
     
 }

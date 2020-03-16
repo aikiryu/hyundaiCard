@@ -50,11 +50,10 @@ const init = () =>{
     const pc = ()=>{}//pc
     
     const common =()=>{
-        const closeBtn = document.querySelector('.close_b'),
-              topBn = document.querySelector('.top_bn');
+        const closeBtn = document.querySelector('.close_b'),topBn = document.querySelector('.top_bn');
         
         closeBtn.addEventListener('click',function(){
-            slideUp('.top_bn')
+            slideUp('.top_bn');
         });
         //-> top banner hide
         
